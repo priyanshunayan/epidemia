@@ -1,0 +1,27 @@
+{
+  "name": "epidemia",
+  "version": "1.0.0",
+  "description": "epidemia backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyanshunayan/epidemia.git"
+  },
+  "author": "priyanshu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priyanshunayan/epidemia/issues"
+  },
+  "homepage": "https://github.com/priyanshunayan/epidemia#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
