@@ -53,7 +53,7 @@ app.use((error, req, res, next) => {
 })
 
 //server start up
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log(`port listening at ${port}`);
 })
 
