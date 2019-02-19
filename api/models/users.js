@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: String,
+    email: {
+        type: String,
+        required: true
+    },
     lat: Number,
     long: Number,
     gender: String,
@@ -15,6 +18,10 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    family_members: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
     }
 })
 
