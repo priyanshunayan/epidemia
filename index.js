@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const hospitalRoute = require('./api/routes/hospitals');
 const userRoutes = require('./api/routes/users');
 const authRoute = require('./api/routes/auth');
-require('./prod')(app);
+require('./startup/prod')(app);
 // port to get from environment variable
 const port = 3000;
 
