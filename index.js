@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     next();
 });
 // mongo db connection
-mongoose.connect('mongodb+srv://priyanshunayan:priyanshunayan@epidemia-2yafu.mongodb.net/epidemia?retryWrites=true');
+mongoose.connect('mongodb+srv://priyanshunayan:priyanshunayan@epidemia-2yafu.mongodb.net/epidemia?retryWrites=true', {useNewUrlParser:true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
