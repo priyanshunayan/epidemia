@@ -7,21 +7,20 @@ const userSchema = mongoose.Schema({
         required: true
     },
     email: {
+        type: String
+    },
+    phone:{
         type: String,
-        required: true
     },
     lat: Number,
     long: Number,
     gender: String,
-    dob: String,
+    dob: Date,
+    pin: Number,
     bloodGroup: String,
     password: {
         type: String,
         required: true
-    },
-    family_members: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'user'
     }
 })
 

@@ -11,17 +11,27 @@ router.post('/login', async (req, res, next) => {
     if(!user) {
         return res.status(400).send("Invalid username or password");
     }
-    const validPassword = bcrypt.compare(req.body.password, user.password);
-    if(!validPassword) {
-        return res.status(400).send("Invalid username or password");
-    }
-    if(validPassword){
-        jwt.sign({user}, 'private', { expiresIn: '1h' }, (err, token) => {
-            if(err) { console.log(err) }    
-            res.send(token);
-        });
-    }
+    bcrypt.compare(req.body.password, user.password, (err, validPassword) => {
+        if(err) {
+            res.status(500).json({
+                message: "error occurred"
+            })
+        }
+        if(!validPassword) {
+            return res.status(400).send("Invalid username or password");
+        }
+        if(validPassword){
+            jwt.sign({user}, 'private', { expiresIn: '1y' }, (err, token) => {
+                if(err) { console.log(err) }    
+                res.status(200).json({
+                    tokenn: token,
+                    user: user
+                });
+            });
+        }
+    });
+    
 });
-
+router.post('/signup', userController.signUp);
 
 module.exports = router;
