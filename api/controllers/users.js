@@ -2,6 +2,7 @@ const Users = require('../models/users');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const FamilyMembers = require('../models/family_members');
 
 const signUp = async (req, res, next) => {
   if (req.body.email && !req.body.phone) {
@@ -136,6 +137,34 @@ const signUp = async (req, res, next) => {
     }
   }
 }
+
+const addFamilyMembers = (req, res, next) => {
+    const familyMembers = new FamilyMembers({
+        _id: mongoose.Types.ObjectId(),
+        userId: req.body.userId,
+        family: req.body.family
+    })
+    familyMembers.save().then(members => {
+        res.status(201).json({
+            message: "Family member added",
+            members
+        })
+    }).catch(e => res.status(500).json({message: "An error occured while saving"}));
+}
+const addOneFamilyMember = (req, res, next) => {
+    FamilyMembers.findOne({userId: req.body.userId}).exec().then(user => {
+        user.family.push(req.body.family);
+         return user.save()
+    }).then(savedUser => {
+        res.status(201).json({
+            message: "user added successfuly",
+            user: savedUser
+        })
+    }).catch(e => res.status(500).json({message: "An error occurred"}));
+}
+
 module.exports = {
-  signUp
+  signUp,
+  addFamilyMembers,
+  addOneFamilyMember
 }
