@@ -6,7 +6,10 @@ const familyMembersSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    reports:{},
+    reports: [{
+        url : String,
+        id: String
+    }],
     family:[{
         phone:{
             type: String,
@@ -22,7 +25,10 @@ const familyMembersSchema = mongoose.Schema({
             type: String
         },
         age: Number,
-        reports: {}
+        reports: [{
+            url : String,
+            id: String
+        }]
     }]
 })
 
