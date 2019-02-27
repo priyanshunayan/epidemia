@@ -6,6 +6,7 @@ const familyMembersSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    reports:{},
     family:[{
         phone:{
             type: String,
@@ -20,7 +21,8 @@ const familyMembersSchema = mongoose.Schema({
         bloodgroup: {
             type: String
         },
-        age: Number
+        age: Number,
+        reports: {}
     }]
 })
 
