@@ -39,7 +39,7 @@ router.post('/bulk', (req, res, next) => {
                   "to": [
                     {
                       "type": "INTERNATIONAL",
-                      "address": "7000409621",
+                      "address": "8989943999",
                       "fields": [
                         "Jack",
                         "$200.00"
