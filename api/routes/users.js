@@ -29,4 +29,5 @@ router.post('/addOneMember', userController.addOneFamilyMember);
 router.get('/getMembers/:userId', userController.getFamilyMembers);
 router.post('/addMembersByEmail', userController.addMemberByEmail);
 router.post('/uploadImage',parser.single("image"), imageController.uploadImage);
+router.get('/users',userController.getUsers );
 module.exports = router;

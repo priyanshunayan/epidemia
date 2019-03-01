@@ -332,9 +332,26 @@ const getFamilyMembers = (req, res, next) => {
   }));
 }
 
+const getUsers = (req, res, next) => {
+  const page = req.query.page;
+  console.log(page);
+  const pagesToSkip = (page-1)*50;
+  Users.find().skip(pagesToSkip).limit(50).exec((err, user) => {
+    if(err){
+      return res.status(500).json({
+        message: "An error occurred"
+      })
+    }
+    res.status(200).json({
+     users: user
+    })
+  })
+}
+
 module.exports = {
   signUp,
   addOneFamilyMember,
   getFamilyMembers,
-  addMemberByEmail
+  addMemberByEmail,
+  getUsers
 }
