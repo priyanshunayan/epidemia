@@ -4,6 +4,7 @@ const Users = require('../models/users');
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
+//TODO Security in the public URL. So that no one can access their reports except them.
 
 cloudinary.config({
   cloud_name: 'epidemia',
@@ -23,7 +24,7 @@ const storage = cloudinaryStorage({
 const parser = multer({
   storage: storage
 });
-//TODO if the user  is not found in user model then check if he is family member of any node. If he is then add the reports  and make a proper check.
+//TODO Make sure the one who is adding reports is either the user himself or the lead or the other family members.
 const uploadImage = (req, res, next) => {
   const image = {};
   image.url = req.file.url;

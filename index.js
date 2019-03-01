@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const hospitalRoute = require('./api/routes/hospitals');
 const userRoutes = require('./api/routes/users');
 const authRoute = require('./api/routes/auth');
+const sendSMS = require('./api/routes/send_sms');
 require('./startup/prod')(app);
 // port to get from environment variable
 const port = 3000;
@@ -35,7 +36,8 @@ db.once('open', function() {
 
 app.use('/', hospitalRoute);
 app.use('/', userRoutes);
-app.use('/', authRoute)
+app.use('/', authRoute);
+app.use('/', sendSMS);
 //routes which don't match the above routes will pass through this and give error.
 app.use((req, res, next) => {
     const error  = new Error('Not Found');
