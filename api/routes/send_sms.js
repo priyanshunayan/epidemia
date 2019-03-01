@@ -27,7 +27,7 @@ router.post('/bulk', (req, res, next) => {
         url: url,
         method: 'POST',
         headers:{
-            'Authorization': 'Basic cHJpeWFuc2h1bmF5YW46cGFzc3dvcmQ='
+            'Authorization': 'Basic cHJpeWFuc2h1bmF5YW4xOnBhc3N3b3Jk'
         },
         json:
             [
