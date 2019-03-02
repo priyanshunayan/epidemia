@@ -15,7 +15,7 @@ router.post('/bulk', (req, res, next) => {
     const message = req.body.message
     let numberArray = [];
     // Querying Database
-    Users.find({pin: pin}).exec((err, users) => {
+    Users.find().exec((err, users) => {
         if(err){
             res.status(500).json({
                 message:"An error ocurred"
