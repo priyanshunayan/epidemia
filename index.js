@@ -12,9 +12,31 @@ const newsRoute = require('./api/routes/news-scrape');
 const cron = require('node-cron');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('6bede71c609049799c43a93512d18c20');
+const notificationModel = require('./api/models/notifications');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 //CRON JOB RUNNING
+cron.schedule('* * * * *', () => {
+    console.log("CRON JOB RUNNING");
+    let notification = new notificationModel({
+        _id: mongoose.Types.ObjectId(),
+        headline: 'Headline',
+        description: 'This is a description'
+    })
+    notification.save((err, notification) => {
+        if(err){
+            console.log(err);
+        }
+        if(notification) {
+            console.log(notification);
+        }
+    })
+    console.log('running a task every minute');
+  });
+
+
+
+
 
 require('./startup/prod')(app);
 
