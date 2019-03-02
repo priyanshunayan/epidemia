@@ -9,10 +9,6 @@ const hospitalSchema = mongoose.Schema({
     },
     name: String,
     type: String,
-    location: {
-    lat: Number,
-    long: Number
-    },
     stock: {
         name: String,
         quantity: Number,
@@ -28,7 +24,10 @@ const hospitalSchema = mongoose.Schema({
         required: true,
         type: String
     }, 
-    Pincode: Number
+    Pincode: Number, 
+    Hospital_Name: String,
+    Location: String,
+    State: String,
 })
 
 module.exports = mongoose.model('hospital_directory', hospitalSchema);
