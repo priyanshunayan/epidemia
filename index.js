@@ -10,8 +10,10 @@ const sendSMS = require('./api/routes/send_sms');
 const diseaseRoute = require('./api/routes/disease');
 const newsRoute = require('./api/routes/news-scrape');
 const cron = require('node-cron');
+
 cron.schedule('* * * * *', () => {
    //Write code here
+   console.log("CRON RUNNING EVERY MINUTE");
   });
 require('./startup/prod')(app);
 
