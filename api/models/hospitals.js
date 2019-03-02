@@ -28,7 +28,7 @@ const hospitalSchema = mongoose.Schema({
         required: true,
         type: String
     }, 
-    pin: Number
+    Pincode: Number
 })
 
 module.exports = mongoose.model('hospital_directory', hospitalSchema);
