@@ -12,4 +12,8 @@ router.post('/addPatient', hosptialController.addPatient);
 router.get('/getPatients/:id', hosptialController.getAllPatients);
 router.get('/getSinglePatient', hosptialController.getSinglePatient);
 router.put('/removePatient', hosptialController.removePatient);
+router.get('/getMedicineStock', hosptialController.getMedicineStock);
+router.post('/addMedicineStock', hosptialController.addMedicineStock);
+router.put('/updateMedicineStock', hosptialController.updateMedicineStock);
+
 module.exports = router;

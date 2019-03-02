@@ -10,11 +10,12 @@ const sendSMS = require('./api/routes/send_sms');
 const diseaseRoute = require('./api/routes/disease');
 const newsRoute = require('./api/routes/news-scrape');
 const cron = require('node-cron');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('6bede71c609049799c43a93512d18c20');
+// To query /v2/top-headlines
+// All options passed to topHeadlines are optional, but you need to include at least one of them
+//CRON JOB RUNNING
 
-cron.schedule('* * * * *', () => {
-   //Write code here
-   console.log("CRON RUNNING EVERY MINUTE");
-  });
 require('./startup/prod')(app);
 
 // port to get from environment variable

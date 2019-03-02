@@ -234,10 +234,85 @@ const removePatient = (req, res, next) => {
   })
 }
 
+const getMedicineStock = (req, res, next) => {
+    const hospitalId = req.query.hospitalId;
+
+    Hospitals.findById(hospitalId).exec((err, hospital) => {
+      if(err){
+        return res.status(500).json({
+          message: 'An error occurred'
+        })
+      }
+      if(hospital){
+        res.status(200).json({
+          stocks: hospital.stock
+        })
+      }
+      if(!hospital){
+        return res.status(400).json({
+          message: 'No documents found'
+        })
+      }
+    })
+}
 const addMedicineStock = (req, res, next) => {
-    
+  const hospitalId = req.body.hospitalId;
+  const stock = req.body.stock;
+  Hospitals.findById(hospitalId).exec((err, hospital) => {
+    if(err){
+      return res.status(500).json({
+        message: 'An error occurred'
+      })
+    }
+    if(hospital){
+      hospital.stock.push(stock);
+      hospital.save((err, saved) => {
+        if(err){
+          return res.status(500).json({
+            message: 'An error occurred'
+          })
+        }
+        if(saved){
+          res.status(200).json({
+            saved
+          })
+        }
+      })
+    }
+  })
 }
 
+const updateMedicineStock = (req, res, next) => {
+  const hospitalId = req.body.hospitalId;
+  const medicineId = req.body.medicineId;
+  const quantity = req.body.quantity;
+  Hospitals.findById(hospitalId).exec((err, hospital) => {
+    if(err){
+      return res.status(500).json({
+        message: 'An error occurred'
+      })
+    }
+    if(hospital) {
+      console.log(hospital.stock[0]._id);
+      hospital.stock.forEach(stock => {
+        if((stock._id).toString() === medicineId.toString()) {
+            stock.quantity = quantity;   
+            hospital.save((err, stock) => {
+              if(err){
+                return res.status(500).json({
+                  message: 'An error occurred'
+                })
+              }
+              res.status(200).json({
+                stock
+              })
+            })   
+        }
+      })
+      
+    }
+  })
+}
 module.exports = {
   addHospitals,
   signUp,
@@ -245,5 +320,8 @@ module.exports = {
   addPatient,
   getAllPatients,
   getSinglePatient,
-  removePatient
+  removePatient,
+  getMedicineStock,
+  addMedicineStock,
+  updateMedicineStock
 }

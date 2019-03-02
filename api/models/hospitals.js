@@ -9,11 +9,11 @@ const hospitalSchema = mongoose.Schema({
     },
     name: String,
     type: String,
-    stock: {
+    stock: [{
         name: String,
         quantity: Number,
         comments: String
-    },
+    }],
     totalBeds: Number,
     emptyBeds: Number,
     patients: [{
