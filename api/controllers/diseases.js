@@ -78,7 +78,28 @@ const getDisease = (req, res, next) => {
     })
 }
 
+const getSymptoms = (req, res, next) => {
+    SymptomsModel.find({}).exec((err, symptoms) => {
+        if(err) {
+            res.status(500).json({
+                message: "An error occurred"
+            })
+        }
+        if(symptoms){
+            res.status(200).json({
+                symptoms
+            })
+        }
+        if(!symptoms) {
+            res.status(200).json({
+                message: "No symptoms are found"
+            })
+        }
+    })
+}
+
 
 module.exports = {
-    getDisease
+    getDisease,
+    getSymptoms
 }
