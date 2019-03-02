@@ -3,13 +3,18 @@ const app = express();
 const mongoose = require('mongoose');
 // To parse incoming post requests url encoded or json... 
 const bodyParser = require('body-parser');
-
 const hospitalRoute = require('./api/routes/hospitals');
 const userRoutes = require('./api/routes/users');
 const authRoute = require('./api/routes/auth');
 const sendSMS = require('./api/routes/send_sms');
 const diseaseRoute = require('./api/routes/disease');
+const newsRoute = require('./api/routes/news-scrape');
+const cron = require('node-cron');
+cron.schedule('* * * * *', () => {
+   //Write code here
+  });
 require('./startup/prod')(app);
+
 // port to get from environment variable
 const port = 3000;
 
@@ -40,6 +45,7 @@ app.use('/', userRoutes);
 app.use('/', authRoute);
 app.use('/', sendSMS);
 app.use('/', diseaseRoute);
+app.use('/', newsRoute);
 //routes which don't match the above routes will pass through this and give error.
 app.use((req, res, next) => {
     const error  = new Error('Not Found');

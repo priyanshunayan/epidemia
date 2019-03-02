@@ -9,7 +9,11 @@ const hospitalSchema = mongoose.Schema({
     long: Number
     },
     totalBeds: Number,
-    emptyBeds: Number
+    emptyBeds: Number,
+    patients: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    }]
 })
 
 module.exports = mongoose.model('hospital', hospitalSchema);

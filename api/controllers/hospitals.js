@@ -20,6 +20,15 @@ const addHospitals = (req, res, next) => {
     })
 }
 
+const signUp = (req, res, next) => {
+    const name = req.body.name;    
+    const type = req.body.type;
+    const location = req.body.location;
+    
+
+}
+
 module.exports = {
-    addHospitals
+    addHospitals,
+    signUp
 }

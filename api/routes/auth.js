@@ -34,4 +34,6 @@ router.post('/login', async (req, res, next) => {
 });
 router.post('/signup', userController.signUp);
 
+//router.post('/hospitalSignup', hospitalController.signUp);
+
 module.exports = router;
