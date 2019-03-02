@@ -24,7 +24,8 @@ const signUp = async (req, res, next) => {
         gender: req.body.gender,
         pin: req.body.pin,
         lat: req.body.lat,
-        long: req.body.long
+        long: req.body.long,
+        bloodGroup: req.body.bloodGroup
       })
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(user.password, salt);
