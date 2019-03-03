@@ -119,27 +119,35 @@ const getDiseases = (req, res, next) => {
 }
 const getSymptomsOfDisease = (req, res, next) => {
     const diseaseId = req.params.id;
-    DiseaseModel.findById(diseaseId).exec((err, res) => {
+    let symptomsArray = [];
+    DiseaseModel.findById(diseaseId).exec((err, response) => {
+      console.log("Inside the disease model");
         if(err){
             res.status(500).json({
                 message: "an error occurred"
             })
         }
-        if(res) {
-            res.symptom_ids.forEach(id => {
-                SymptomsModel.find({id:id}).exec((err, res) => {
+        if(response) {
+            response.symptom_ids.forEach(id => {
+                SymptomsModel.findOne({id:id}).exec((err, responseSymptoms) => {
                     if(err){
                         res.status(500).json({
                             message: "an error occurred"
                         })
                     }
-                    if(res) {
-                        res.status(200).json({
-                            res
-                        })
+                    if(responseSymptoms) {
+                      console.log("inside res");
+                      symptomsArray.push(responseSymptoms);
                     }
                 })
+            });
+            setTimeout(() => {
+              res.status(200).json({
+                response,
+                symptomsArray
             })
+            }
+           , 2000);
         }
     })
 }
@@ -176,6 +184,7 @@ const postData = (req, res, next) => {
       }
   })
 }
+
 module.exports = {
   getDisease,
   getSymptoms,
