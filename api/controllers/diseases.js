@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const DiseaseModel = require('../models/diseases');
 const SymptomsModel = require('../models/symptoms');
-
+const DataModel = require('../models/user-data');
 
 const getDisease = (req, res, next) => {
   const query = req.query.symptoms;
@@ -143,9 +143,43 @@ const getSymptomsOfDisease = (req, res, next) => {
         }
     })
 }
+
+const postData = (req, res, next) => {
+  const symptoms = req.body.symptoms;
+  const epidemic = req.body.epidemic;
+  const recentDisease = req.body.recentDisease;
+  const UserId = req.body.userId;
+
+  let Data = new DataModel({
+      _id: mongoose.Types.ObjectId(),
+      symptoms: symptoms,
+      epidemic: epidemic,
+      recentDisease: recentDisease,
+      userId : UserId
+  })
+
+  Data.save((err, data) => {
+      if(err){
+          res.status(500).json({
+              "message": "An error occurred"
+          })
+      }
+      if(data){
+          res.status(200).json({
+              data
+          })
+      }
+      if(!data){
+          res.status(400).json({
+              message: "No records found"
+          })
+      }
+  })
+}
 module.exports = {
   getDisease,
   getSymptoms,
   getDiseases,
-  getSymptomsOfDisease
+  getSymptomsOfDisease,
+  postData
 }
