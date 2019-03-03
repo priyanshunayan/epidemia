@@ -25,7 +25,7 @@ const getDisease = (req, res, next) => {
         })    
     });
 
-    DiseaseModel.find({}).limit(10).exec((err, diseases) => {
+    DiseaseModel.find({}).exec((err, diseases) => {
         console.log("=========Inside the Disease Model ===============");
         if(err){
             res.status(500).json({
@@ -74,9 +74,9 @@ const getDisease = (req, res, next) => {
                 }
             })
         }
-        
+        diseaseArray.length =10;
         res.status(200).json({
-            res: diseaseArray.slice(0,10)
+            res: diseaseArray
         })
     })
 }
