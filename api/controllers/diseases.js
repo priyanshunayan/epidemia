@@ -18,12 +18,14 @@ const getDisease = (req, res, next) => {
                 })
             }
             console.log("=========puhsed==========", symptoms);
-
-            symptomsArray.push(symptoms[0].id);
+            if(symptoms){
+                symptomsArray.push(symptoms[0].id);
+            }
+           
         })    
     });
 
-    DiseaseModel.find({}).exec((err, diseases) => {
+    DiseaseModel.find({}).limit(10).exec((err, diseases) => {
         console.log("=========Inside the Disease Model ===============");
         if(err){
             res.status(500).json({
@@ -73,7 +75,7 @@ const getDisease = (req, res, next) => {
             })
         }
         res.status(200).json({
-            res: diseaseArray
+            res: diseaseArray.slice(10)
         })
     })
 }

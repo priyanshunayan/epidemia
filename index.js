@@ -17,21 +17,8 @@ const rp = require('request-promise');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 //CRON JOB RUNNING
-cron.schedule('* * * * *', () => {
-  /*     console.log("CRON JOB RUNNING");
-      let notification = new notificationModel({
-          _id: mongoose.Types.ObjectId(),
-          headline: 'Headline',
-          description: 'This is a description'
-      })
-      notification.save((err, notification) => {
-          if(err){
-              console.log(err);
-          }
-          if(notification) {
-              console.log(notification);
-          }
-      }) */
+
+/*   cron.schedule('* * * * */2/*', () => {
   console.log('running a task every minute');
   rp.get('http://192.168.225.35:8000/predict/epidemic')
     .then(res => {
@@ -88,7 +75,7 @@ cron.schedule('* * * * *', () => {
        
 
     })
-});
+}); */
 
 
 
