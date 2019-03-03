@@ -26,6 +26,7 @@
     "cloudinary": "^1.13.2",
     "compression": "^1.7.3",
     "express": "^4.16.4",
+    "firebase": "^5.8.5",
     "helmet": "^3.15.1",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.12",
