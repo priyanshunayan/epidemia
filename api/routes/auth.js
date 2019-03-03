@@ -24,7 +24,7 @@ router.post('/login', async (req, res, next) => {
             jwt.sign({user}, 'private', { expiresIn: '1y' }, (err, token) => {
                 if(err) { console.log(err) }    
                 res.status(200).json({
-                    tokenn: token,
+                    token: token,
                     user: user
                 });
             });

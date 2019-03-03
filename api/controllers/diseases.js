@@ -51,7 +51,7 @@ const getDisease = (req, res, next) => {
             
                 
                     diseaseArray.push({
-                        disease: disease.description,
+                        disease: disease,
                         percentMatch: count/symptomsArray.length*100
                         
                     })
