@@ -74,8 +74,9 @@ const getDisease = (req, res, next) => {
                 }
             })
         }
+        
         res.status(200).json({
-            res: diseaseArray.slice(10)
+            res: diseaseArray.slice(0,10)
         })
     })
 }
