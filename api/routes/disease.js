@@ -9,5 +9,6 @@ const diseaseController = require('../controllers/diseases');
 
 router.get('/disease', diseaseController.getDisease);
 router.get('/symptoms', diseaseController.getSymptoms);
-
+router.get('/getdiseases', diseaseController.getDiseases);
+router.get('/getSymptomsOfDisease/:id', diseaseController.getSymptomsOfDisease);
 module.exports = router;
