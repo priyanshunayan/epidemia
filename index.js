@@ -17,7 +17,7 @@ const rp = require('request-promise');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 //CRON JOB RUNNING
-cron.schedule('*/2 * * * *', () => {
+cron.schedule('* * * * *', () => {
   /*     console.log("CRON JOB RUNNING");
       let notification = new notificationModel({
           _id: mongoose.Types.ObjectId(),
