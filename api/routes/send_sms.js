@@ -30,10 +30,10 @@ var config = {
     });
   }
 
-  router.post('/push', (req, res, next) => {
+ /*  router.post('/push', (req, res, next) => {
       const pin = req.body.pin;
       writeUserData(pin);
-  })
+  }) */
 /* let url = "http://api.msg91.com/api/v2/sendsms";
 const smsApiKey = "241761AHj4Wys5oNu5bbb3ad5"; */
 /* let url = "https://api.bulksms.com/v1/messages"; */
@@ -99,7 +99,7 @@ const smsApiKey = "241761AHj4Wys5oNu5bbb3ad5"; */
 
 
 
-router.post('/bulk', (req, res, next) => {
+/* router.post('/bulk', (req, res, next) => {
     console.log('inside bulk');
     const pin= req.body.pin;
     const message = req.body.message
@@ -191,5 +191,5 @@ router.post('/bulk', (req, res, next) => {
        res.status(200).json(response);
     });
        */
-});
+}); */
   module.exports = router;
